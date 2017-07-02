@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="type_array">
+        <item name="item">全部类型</item>
+        <item name="item">支护变形</item>
+        <item name="item">掉块</item>
+        <item name="item">渗水</item>
+    </string-array>
+    
+    <string-array name="question_array">
+        <item name="item">全部问题</item>
+        <item name="item">变形较大</item>
+        <item name="item">掉块严重</item>
+        <item name="item">水量较大</item>
+    </string-array>
+</resources>

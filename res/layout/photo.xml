@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<com.example.newdemo.ZoomImageView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/zoom_image_view"
+    android:layout_height="match_parent" 
+    android:layout_width="match_parent" 
+    android:background="#000000">
+    
+</com.example.newdemo.ZoomImageView>
+
+<!-- <RelativeLayout  -->
+<!--     xmlns:android="http://schemas.android.com/apk/res/android"  -->
+<!--     android:layout_width="match_parent"  -->
+<!--     android:layout_height="match_parent"  -->
+<!--     android:orientation="vertical"> -->
+
+<!-- 	<ImageView  -->
+<!-- 	    android:layout_width="fill_parent"  -->
+<!-- 	    android:layout_height="fill_parent"  -->
+<!-- 	    android:layout_centerInParent="true"  -->
+<!-- 	    android:id="@+id/photo"/> -->
+
+<!-- </RelativeLayout> -->

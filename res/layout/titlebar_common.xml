@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_title" >
+
+    
+    <TextView 
+        android:id="@+id/tv_titlebar_title"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"
+        android:text="智能健康状态评估系统"
+        android:textSize="20dip"
+        android:gravity="center"/>
+</RelativeLayout>

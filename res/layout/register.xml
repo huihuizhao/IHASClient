@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout 
+    android:orientation="vertical" 
+    android:layout_height="match_parent" 
+    android:layout_width="match_parent" 
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    
+    <include
+        android:id="@+id/layout_titlebar"
+        layout="@layout/titlebar_common"
+        android:layout_width="fill_parent"
+        android:layout_height="45dp"
+        android:layout_alignParentTop="true" 
+        android:layout_centerVertical="true"/>
+
+	<ScrollView 
+	    android:layout_height="fill_parent" 
+	    android:layout_width="fill_parent" 
+	    android:scrollbars="vertical" 
+	    android:fadingEdge="none" 
+	    android:cacheColorHint="#00000000">
+
+		<LinearLayout 
+		    android:orientation="vertical" 
+		    android:layout_height="fill_parent" 
+		    android:layout_width="fill_parent">
+
+			<EditText 
+			    android:id="@+id/et_mobile" 
+			    android:layout_height="wrap_content" 
+		   		android:layout_width="fill_parent"
+			    android:inputType="phone" 
+			    android:hint="手机号码" 
+			    android:layout_margin="@dimen/view_margin_10" />
+
+			<Button 
+			    android:id="@+id/btn_verify" 
+			    android:layout_height="wrap_content" 
+		   		android:layout_width="fill_parent"
+			    android:layout_margin="@dimen/view_margin_10" 
+			    android:text="获取验证码" 
+			    android:layout_gravity="center"/>
+
+			<!--android:hint="短信验证码－敬请期待"-->
+			<EditText 
+			    android:id="@+id/et_code" 
+			    android:layout_height="wrap_content" 
+		   		android:layout_width="fill_parent"
+			    android:inputType="number" 
+				android:hint="请输入手机获取到的验证码"
+			    android:layout_margin="@dimen/view_margin_10" />
+
+		<RelativeLayout 
+		    android:layout_height="40dp" 
+		    android:layout_width="fill_parent" 
+		    android:layout_margin="@dimen/view_margin_10" >
+		    
+		    <Button 
+		        android:id="@+id/btn_show"
+			    android:layout_height="40dp" 
+			    android:layout_width="65dp" 
+			    android:text="显示" 
+			    android:layout_gravity="center" 
+			    android:layout_alignParentRight="true"/>
+
+			<EditText 
+			    android:id="@+id/et_pswd" 
+			    android:layout_height="40dp" 
+		   		android:layout_width="fill_parent"
+			    android:inputType="textPassword"
+			    android:layout_marginRight="65dp"
+			    android:hint="密码" />
+
+		</RelativeLayout>
+
+		<EditText 
+		    android:id="@+id/et_pswdAgine" 
+		    android:layout_height="wrap_content" 
+		   	android:layout_width="fill_parent"
+		    android:hint="重复密码" 
+		    android:layout_margin="@dimen/view_margin_10" 
+		    android:password="true"/>
+
+		<Button 
+		    android:id="@+id/btn_register" 
+		    android:layout_height="wrap_content" 
+		   	android:layout_width="fill_parent"
+		    android:layout_margin="@dimen/view_margin_10" 
+		    android:text="提交注册" 
+		    android:layout_gravity="center"/>
+
+		</LinearLayout>
+
+	</ScrollView>
+
+</LinearLayout>

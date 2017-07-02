@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 灰色背景 -->
+    <color name="layout_background">#EEEEEE</color>
+    <!-- list分割线 -->
+    <color name="split_line">#DDDDDD</color>
+    
+    <!-- 黑色 -->
+    <color name="color_black">#1F1F1F</color>
+    <!-- 红色 -->
+    <color name="color_red">#CD0000</color>
+    <!-- 深红色 -->
+    <color name="color_deep_red">#fe1601</color>
+    <!-- 白色 -->
+    <color name="color_white">#FFFFFF</color>
+    <!-- 灰色 -->
+    <color name="color_gray">#7C7C7C</color>
+    <!-- 浅灰色 -->
+    <color name="color_gray_light">#EEEEEE</color>
+    <!-- 浅中灰 -->
+    <color name="color_gray_line">#A9A9A9</color>
+    <!-- 深灰色 -->
+    <color name="color_gray_deep">#333333</color>
+    <!-- 蓝色 -->
+    <color name="color_blue">#0000cc</color>
+    <!-- 黄色 -->
+    <color name="color_yellow">#FF7F00</color>
+    <!-- 绿色 -->
+    <color name="color_green">#10a52d</color>
+    <!-- 紫色 -->
+    <color name="color_purple">#FF12FF</color>
+    <!-- 棕色 -->
+    <color name="color_brown">#965515</color>
+    <!-- 橙色 -->
+    <color name="color_orange">#f4530b</color>
+    <!-- 浅橙色 -->
+    <color name="color_orange_light">#ff9900</color>
+    <!-- 粉色 -->
+    <color name="color_pink">#ff6868</color>
+    <!-- 浅粉色 -->
+    <color name="color_pink_light">#F2D4CF</color>
+        <!-- 浅绿色 -->
+    <color name="color_green_light">#BAEA7B</color>
+
+    <!-- LIST BORDER COLOR -->
+	<color name="rounded_container_border">#ffb7babb</color>
+
+	<!-- ITEM BACKGROUND COLOR - STATE - DEFAULT -->
+	<color name="base_start_color_default">#FFFFFF</color>
+    <color name="base_end_color_default">#FFFFFF</color>
+    	
+	<!-- ITEM BACKGROUND COLOR - STATE - PRESSED -->
+	<!-- <color name="base_start_color_pressed">#ff3590c4</color>
+	<color name="base_end_color_pressed">#ff2570ba</color> -->
+	<color name="base_start_color_pressed">#FF7F00</color>
+    <color name="base_end_color_pressed">#FF7F00</color>
+    
+    <!-- ITEM TEXT COLORS - STATES - PRESSED AND DEFAULT -->
+    <color name="text_color_default">#000000</color>
+    <color name="text_color_pressed">#ffffff</color>
+    <color name="dialog_transparent">#66000000</color>
+    
+    <!-- 图案解锁 -->
+    <color name="gesture_background">#ff303237</color>
+    <color name="color_hei_8">#00000000</color>
+    <drawable name="trans">@color/color_hei_8</drawable>
+    
+</resources>

@@ -184,6 +184,7 @@ public class UploadActivity extends Activity implements OnClickListener {
 		image = (ImageView) findViewById(R.id.image);
 		image.setOnClickListener(this);
 		ipInfo = (EditText) findViewById(R.id.ipInfo);
+		ipInfo.setText("192.168.1.101");
 		videoTextView = (TextView) findViewById(R.id.videoTextView);
 
 		ArrayAdapter<String> typeAdapter = new ArrayAdapter<String>(

@@ -57,8 +57,8 @@ public class LoginActivity extends Activity implements OnClickListener {
 	private String userName, password;
 	private CheckBox remeber_pswd;
 
-	private static String login_url = "http://192.168.1.101:8080/JsonWeb/login.action?";
-	private final String login_url_constant = "http://192.168.1.101:8080/JsonWeb/login.action?";
+	private static String login_url = "http://192.168.1.101:8080/IHASWeb/login.action?";
+	private final String login_url_constant = "http://192.168.1.101:8080/IHASWeb/login.action?";
 
 	// private static String login_url =
 	// "http://192.168.1.6:8080/JsonWeb/login.action?";
@@ -139,33 +139,33 @@ public class LoginActivity extends Activity implements OnClickListener {
 		case R.id.bt_login:
 			String phoneNumber = et_phone.getText().toString();
 			String password = et_pwd.getText().toString();
-			if (phoneNumber.equals("18888888888") && password.equals("1")) {
-				// editor = pref.edit();
-				// if (remeber_pswd.isChecked()) {
-				// editor.putBoolean("remeberPswd", true);
-				// editor.putString("userName", telephone);
-				// editor.putString("password", password);
-				// } else {
-				// editor.clear();
-				// }
-				// editor.commit();
-				// Intent intent = new Intent(LoginActivity.this,
-				// MapActivity.class);
-				// startActivity(intent);
-
-				Intent intent = new Intent(LoginActivity.this,
-						UploadActivity.class);
-				startActivity(intent);
-
-				appPara = (ApplicationParameters) getApplicationContext();
-				appPara.setphoneNumber(phoneNumber);// 赋值操作
-				LoginActivity.this.finish();
-			} else {
-				MyToast.showToast(LoginActivity.this, "请输入正确的手机号或密码");
-			}
+//			if (phoneNumber.equals("18888888888") && password.equals("1")) {
+//				// editor = pref.edit();
+//				// if (remeber_pswd.isChecked()) {
+//				// editor.putBoolean("remeberPswd", true);
+//				// editor.putString("userName", telephone);
+//				// editor.putString("password", password);
+//				// } else {
+//				// editor.clear();
+//				// }
+//				// editor.commit();
+//				// Intent intent = new Intent(LoginActivity.this,
+//				// MapActivity.class);
+//				// startActivity(intent);
+//
+//				Intent intent = new Intent(LoginActivity.this,
+//						UploadActivity.class);
+//				startActivity(intent);
+//
+//				appPara = (ApplicationParameters) getApplicationContext();
+//				appPara.setphoneNumber(phoneNumber);// 赋值操作
+//				LoginActivity.this.finish();
+//			} else {
+//				MyToast.showToast(LoginActivity.this, "请输入正确的手机号或密码");
+//			}
 
 			// 登录验证,连接数据库
-			// loginRemoteService(phoneNumber, password);
+			 loginRemoteService(phoneNumber, password);
 			break;
 		// 注册
 //		case R.id.bt_register:

@@ -141,7 +141,7 @@ public class VideoActivity extends Activity implements SurfaceHolder.Callback {
 						mRecorder.prepare();
 						mRecorder.start();
 						mStartedFlg = true;
-						mBtnStartStop.setText("停止");
+						mBtnStartStop.setText("完成");
 						// }
 					} catch (Exception e) {
 						e.printStackTrace();
@@ -160,11 +160,19 @@ public class VideoActivity extends Activity implements SurfaceHolder.Callback {
 								camera.release();
 								camera = null;
 							}
+							
+							
+							
+							
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
 					}
 					mStartedFlg = false;
+					
+					VideoActivity.this.finish();
+					
+					
 				}
 			}
 		});

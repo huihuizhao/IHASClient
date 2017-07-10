@@ -73,7 +73,7 @@ public class UploadActivity extends Activity implements OnClickListener {
 	private Button mPlayButton;
 	private Button send_bt;
 	private ImageView image;
-	private EditText ipInfo;
+	// private EditText ipInfo;
 	private TextView record_name;
 	private TextView videoTextView;
 	// private Spinner type_sp, question_sp;
@@ -183,8 +183,8 @@ public class UploadActivity extends Activity implements OnClickListener {
 		send_bt.setOnClickListener(this);
 		image = (ImageView) findViewById(R.id.image);
 		image.setOnClickListener(this);
-		ipInfo = (EditText) findViewById(R.id.ipInfo);
-		ipInfo.setText("192.168.1.101");
+		// ipInfo = (EditText) findViewById(R.id.ipInfo);
+		// ipInfo.setText("192.168.1.101");
 		videoTextView = (TextView) findViewById(R.id.videoTextView);
 
 		ArrayAdapter<String> typeAdapter = new ArrayAdapter<String>(
@@ -271,11 +271,12 @@ public class UploadActivity extends Activity implements OnClickListener {
 		case R.id.send_bt:
 			if (!(image.getDrawable() == null)
 					&& !(record_name.getText().toString().trim().equals(""))
-					&& !(videoTextView.getText().toString().trim().equals(""))
-					&& !(ipInfo.getText().toString().trim().equals(""))) {
+					&& !(videoTextView.getText().toString().trim().equals(""))) {
+				// && !(ipInfo.getText().toString().trim().equals(""))) {
 				// if (!(record_name.getText().toString().trim().equals("")))
 				// {
-				String ip = ipInfo.getText().toString();
+				// String ip = ipInfo.getText().toString();
+				String ip = "218.249.137.198";
 
 				urlParameters = "http://" + ip + ":8080/IHASWeb/Insert.action?";
 				url_constant_parameters = "http://" + ip
@@ -334,7 +335,8 @@ public class UploadActivity extends Activity implements OnClickListener {
 
 			} else {
 				MyToast.showToast(UploadActivity.this,
-						"请上传照片、音频、视频各项数据，并设置服务器IP地址");
+				// "请上传照片、音频、视频各项数据，并设置服务器IP地址");
+						"请上传照片、音频、视频各项数据");
 			}
 			break;
 		// case R.id.btn_titlebar_right:
@@ -581,12 +583,12 @@ public class UploadActivity extends Activity implements OnClickListener {
 				// Environment.getExternalStorageDirectory()
 				// + "/18888888888" + strTimeVoice + ".jpg");
 				startPhotoZoom(Uri.fromFile(picture));
-				
-//				Bitmap photo = BitmapFactory.decodeFile(imagePath);
+
+				// Bitmap photo = BitmapFactory.decodeFile(imagePath);
 				// photo.compress(CompressFormat.JPEG, 100, new
 				// FileOutputStream(file));
-//				image.setImageBitmap(photo);
-				
+				// image.setImageBitmap(photo);
+
 				break;
 			case UI_PHOTO_ZOOM_BACK:
 				File file = new File(imagePath);

@@ -217,8 +217,8 @@ public final class R {
         public static final int ib_delete_phone=0x7f0b0006;
         public static final int image=0x7f0b0020;
         public static final int imageview=0x7f0b0001;
-        public static final int ipInfo=0x7f0b0026;
-        public static final int ip_bt=0x7f0b0025;
+        public static final int ipInfo=0x7f0b0027;
+        public static final int ip_bt=0x7f0b0026;
         public static final int iv_logo=0x7f0b0004;
         public static final int layout_titlebar=0x7f0b000a;
         public static final int login_bt=0x7f0b0010;
@@ -230,7 +230,7 @@ public final class R {
         public static final int record_name=0x7f0b0022;
         public static final int remeber_pswd=0x7f0b000f;
         public static final int request=0x7f0b0014;
-        public static final int send_bt=0x7f0b0027;
+        public static final int send_bt=0x7f0b0025;
         public static final int surfaceview=0x7f0b0000;
         public static final int takePhoto_bt=0x7f0b001f;
         public static final int tel_et=0x7f0b000c;
@@ -253,6 +253,7 @@ public final class R {
         public static final int register=0x7f030008;
         public static final int titlebar_common=0x7f030009;
         public static final int upload=0x7f03000a;
+        public static final int upload00=0x7f03000b;
     }
     public static final class menu {
         public static final int main=0x7f0a0000;

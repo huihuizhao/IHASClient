@@ -90,7 +90,31 @@
                 android:text="点击按钮录制视频" />
         </RelativeLayout>
 
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content" >
 
+            <Button
+                android:id="@+id/ip_bt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="2dip"
+                android:layout_marginRight="2dip"
+                android:layout_marginTop="6dip"
+                android:background="@drawable/selector_red_corners_button"
+                android:text="IP地址" />
+
+            <EditText
+                android:id="@+id/ipInfo"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dip"
+                android:layout_toRightOf="@+id/ip_bt"
+                android:focusable="true"
+                android:hint="请输入服务器ip地址"
+                android:maxLines="2" />
+        </RelativeLayout>
 
         <Button
             android:id="@+id/send_bt"

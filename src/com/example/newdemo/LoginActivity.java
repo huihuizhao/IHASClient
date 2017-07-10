@@ -57,8 +57,11 @@ public class LoginActivity extends Activity implements OnClickListener {
 	private String userName, password;
 	private CheckBox remeber_pswd;
 
-	private static String login_url = "http://192.168.1.101:8080/IHASWeb/login.action?";
-	private final String login_url_constant = "http://192.168.1.101:8080/IHASWeb/login.action?";
+//	private static String login_url = "http://192.168.1.103:8080/IHASWeb/login.action?";
+//	private final String login_url_constant = "http://192.168.1.103:8080/IHASWeb/login.action?";
+
+	private static String login_url = "http://218.249.137.198:8080/IHASWeb/login.action?";
+	private final String login_url_constant = "http://218.249.137.198:8080/IHASWeb/login.action?";
 
 	// private static String login_url =
 	// "http://192.168.1.6:8080/JsonWeb/login.action?";

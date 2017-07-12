@@ -78,7 +78,7 @@
                 android:layout_marginTop="6dip"
                 android:background="@drawable/selector_orange_corners_button"
                 android:padding="12dp"
-                android:text="视频" />
+                android:text="录像" />
 
             <TextView
                 android:id="@+id/videoTextView"

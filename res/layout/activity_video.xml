@@ -31,31 +31,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
         android:layout_marginBottom="6dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
         android:background="@drawable/selector_blue_corners_button"
-        android:text="录制" />
+        android:text="录像" />
 
     <TextView
         android:id="@+id/cameraLoc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="16dp"
-        android:layout_marginRight="120dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
         android:text="摄像头："
-        android:textSize="18sp" />
+        android:textSize="18sp" 
+         android:textColor="@color/color_white" />
 
     <RadioGroup
         android:id="@+id/radioGroupCamera"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="12dp"
-        android:layout_marginRight="20dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginLeft="100dp"
         android:orientation="horizontal" >
 
         <RadioButton

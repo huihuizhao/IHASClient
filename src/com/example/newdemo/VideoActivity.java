@@ -9,6 +9,7 @@ import android.media.MediaRecorder;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.Bundle;
+import android.support.annotation.IdRes;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.SurfaceHolder;
@@ -17,7 +18,9 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.File;
 import java.util.Calendar;
@@ -27,7 +30,7 @@ public class VideoActivity extends Activity implements SurfaceHolder.Callback {
 
 	private SurfaceView mSurfaceview;
 	private Button mBtnStartStop;
-//	private Button mBtnPlay;
+	// private Button mBtnPlay;
 	private boolean mStartedFlg = false;// 是否正在录像
 	private boolean mIsPlay = false;// 是否正在播放录像
 	private MediaRecorder mRecorder;
@@ -36,8 +39,9 @@ public class VideoActivity extends Activity implements SurfaceHolder.Callback {
 	private Camera camera;
 	private MediaPlayer mediaPlayer;
 	private String path;
-	private TextView textView;
-	private int text = 0;
+	private TextView longTextView;
+	private int videoLength = 0;
+	private int cameraIndex = 0;
 
 	private ApplicationParameters appPara;
 
@@ -45,8 +49,8 @@ public class VideoActivity extends Activity implements SurfaceHolder.Callback {
 	private Runnable runnable = new Runnable() {
 		@Override
 		public void run() {
-			text++;
-			textView.setText(text + "秒");
+			videoLength++;
+			longTextView.setText("时长：" + videoLength + "秒");
 			handler.postDelayed(this, 1000);
 		}
 	};
@@ -60,8 +64,31 @@ public class VideoActivity extends Activity implements SurfaceHolder.Callback {
 		mSurfaceview = (SurfaceView) findViewById(R.id.surfaceview);
 		mImageView = (ImageView) findViewById(R.id.imageview);
 		mBtnStartStop = (Button) findViewById(R.id.btnStartStop);
-//		mBtnPlay = (Button) findViewById(R.id.btnPlayVideo);
-		textView = (TextView) findViewById(R.id.text);
+		// mBtnPlay = (Button) findViewById(R.id.btnPlayVideo);
+		longTextView = (TextView) findViewById(R.id.longTextView);
+
+		// 单选框
+		RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radioGroupCamera);
+
+		radioGroup
+				.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+					public void onCheckedChanged(RadioGroup group,
+							@IdRes int checkedId) {
+						if (checkedId == R.id.frontRadioButton) {
+							cameraIndex = 0;
+							Toast.makeText(VideoActivity.this, "您选择了前置摄像头录像",
+									Toast.LENGTH_LONG).show();
+
+						}
+						if (checkedId == R.id.backRadioButton) {
+							cameraIndex = 1;
+							Toast.makeText(VideoActivity.this, "您选择了后置摄像头录像",
+									Toast.LENGTH_LONG).show();
+						}
+
+					}
+				});
+
 		mBtnStartStop.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
@@ -81,8 +108,14 @@ public class VideoActivity extends Activity implements SurfaceHolder.Callback {
 						mRecorder = new MediaRecorder();
 					}
 
-//					camera = Camera.open(Camera.CameraInfo.CAMERA_FACING_BACK);//后置摄像头
-					camera = Camera.open(Camera.CameraInfo.CAMERA_FACING_FRONT);//前置摄像头录像
+					if (cameraIndex == 0) {
+						camera = Camera
+								.open(Camera.CameraInfo.CAMERA_FACING_FRONT);// 前置摄像头录像
+					} else if (cameraIndex == 1) {
+						camera = Camera
+								.open(Camera.CameraInfo.CAMERA_FACING_BACK);// 后置摄像头
+					}
+
 					if (camera != null) {
 						camera.setDisplayOrientation(90);
 
@@ -116,9 +149,9 @@ public class VideoActivity extends Activity implements SurfaceHolder.Callback {
 						mRecorder.setVideoSize(640, 480);
 						mRecorder.setVideoFrameRate(30);
 						mRecorder.setVideoEncodingBitRate(3 * 1024 * 1024);
-//						2.1竖屏情况下： 
-//						如果是前置摄像头： 
-						mRecorder.setOrientationHint(270); //翻转
+						// 2.1竖屏情况下：
+						// 如果是前置摄像头：
+						mRecorder.setOrientationHint(270); // 翻转
 						// 设置记录会话的最大持续时间（毫秒）
 						mRecorder.setMaxDuration(30 * 1000);
 						mRecorder.setPreviewDisplay(mSurfaceHolder.getSurface());
@@ -130,12 +163,12 @@ public class VideoActivity extends Activity implements SurfaceHolder.Callback {
 						// dir.mkdir();
 						// }
 						// path = dir + "/" + getDate() + ".mp4";
-//						path="/storage/emulated/0/1888888888820170628072031.mp4";
-//						path = appPara.getvideoPath();
+						// path="/storage/emulated/0/1888888888820170628072031.mp4";
+						// path = appPara.getvideoPath();
 						// path = ((ApplicationParameters)
 						// getApplication()).getvideoPath();
 						appPara = (ApplicationParameters) getApplicationContext();
-						String path=appPara.getvideoPath();
+						String path = appPara.getvideoPath();
 						System.out.println(path);
 						mRecorder.setOutputFile(path);
 						mRecorder.prepare();
@@ -160,19 +193,15 @@ public class VideoActivity extends Activity implements SurfaceHolder.Callback {
 								camera.release();
 								camera = null;
 							}
-							
-							
-							
-							
+
 						} catch (Exception e) {
 							e.printStackTrace();
 						}
 					}
 					mStartedFlg = false;
-					
+
 					VideoActivity.this.finish();
-					
-					
+
 				}
 			}
 		});
@@ -281,15 +310,14 @@ public class VideoActivity extends Activity implements SurfaceHolder.Callback {
 			mediaPlayer = null;
 		}
 	}
-	
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if (keyCode == KeyEvent.KEYCODE_BACK) {
-//			 Intent intent = new Intent(VideoActivity.this,
-//			 UploadActivity.class);
-//			 startActivity(intent);
-			 VideoActivity.this.finish();
+			// Intent intent = new Intent(VideoActivity.this,
+			// UploadActivity.class);
+			// startActivity(intent);
+			VideoActivity.this.finish();
 		}
 		return false;
 	}

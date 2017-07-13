@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/layout_background" >
+    android:background="@color/color_gray" >
 
     <SurfaceView
         android:id="@+id/surfaceview"
@@ -11,13 +11,13 @@
         android:layout_marginBottom="60dp" />
 
     <TextView
-        android:id="@+id/text"
+        android:id="@+id/longTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="72dp"
-        android:text="0"
+        android:text="时长：0 秒"
         android:textSize="18sp" />
 
     <ImageView
@@ -31,22 +31,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
+        android:layout_marginBottom="6dp"
         android:layout_marginLeft="20dp"
         android:background="@drawable/selector_blue_corners_button"
         android:text="录制" />
 
-    <RadioGroup
-        android:id="@+id/radioGroupID"
+    <TextView
+        android:id="@+id/cameraLoc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="160dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginRight="120dp"
+        android:text="摄像头："
+        android:textSize="18sp" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupCamera"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="12dp"
+        android:layout_marginRight="20dp"
         android:orientation="horizontal" >
 
         <RadioButton
             android:id="@+id/frontRadioButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:checked="true"
             android:text="前" />
 
         <RadioButton

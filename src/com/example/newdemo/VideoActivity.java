@@ -74,16 +74,24 @@ public class VideoActivity extends Activity implements SurfaceHolder.Callback {
 				.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
 					public void onCheckedChanged(RadioGroup group,
 							@IdRes int checkedId) {
-						if (checkedId == R.id.frontRadioButton) {
-							cameraIndex = 0;
-							Toast.makeText(VideoActivity.this, "您选择了前置摄像头录像",
+						if (mStartedFlg) {
+							Toast.makeText(VideoActivity.this, "请先点击”按钮“完成当前录制，然后重新打开录像界面，选择摄像头",
 									Toast.LENGTH_LONG).show();
+						} else {
+							if (checkedId == R.id.frontRadioButton) {
+								cameraIndex = 0;
+								Toast.makeText(VideoActivity.this,
+										"您选择了前置摄像头录像", Toast.LENGTH_LONG)
+										.show();
 
-						}
-						if (checkedId == R.id.backRadioButton) {
-							cameraIndex = 1;
-							Toast.makeText(VideoActivity.this, "您选择了后置摄像头录像",
-									Toast.LENGTH_LONG).show();
+							}
+							if (checkedId == R.id.backRadioButton) {
+								cameraIndex = 1;
+								Toast.makeText(VideoActivity.this,
+										"您选择了后置摄像头录像", Toast.LENGTH_LONG)
+										.show();
+							}
+
 						}
 
 					}

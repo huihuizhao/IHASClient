@@ -61,7 +61,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:layout_toRightOf="@+id/record_bt" />
+                android:layout_toRightOf="@+id/record_bt" 
+                android:text="点击左侧”录音“按钮录制音频" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -87,7 +88,7 @@
                 android:layout_centerHorizontal="true"
                 android:layout_centerInParent="true"
                 android:layout_toRightOf="@+id/play_bt"
-                android:text="点击按钮录制视频" />
+                android:text="点击左侧”录像“按钮录制视频" />
         </RelativeLayout>
 
 

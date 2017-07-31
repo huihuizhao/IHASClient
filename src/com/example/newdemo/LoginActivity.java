@@ -142,7 +142,8 @@ public class LoginActivity extends Activity implements OnClickListener {
 		case R.id.bt_login:
 			String phoneNumber = et_phone.getText().toString();
 			String password = et_pwd.getText().toString();
-			if (phoneNumber.equals("18800000000") && password.equals("1")) {
+			if (phoneNumber.equals("") && password.equals("")) {
+//			if (phoneNumber.equals("1") && password.equals("1")) {
 				// editor = pref.edit();
 				// if (remeber_pswd.isChecked()) {
 				// editor.putBoolean("remeberPswd", true);

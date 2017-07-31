@@ -20,6 +20,7 @@ import org.json.JSONObject;
 
 import com.example.newdemo.AudioSourceMic;
 import com.example.newdemo.net.HttpUtil;
+import com.example.newdemo.net.HttpsUtil;
 import com.example.newdemo.util.MyLog;
 import com.example.newdemo.util.MyToast;
 
@@ -268,7 +269,7 @@ public class UploadActivity extends Activity implements OnClickListener {
 
 			videoTextView.setText(videoName);
 			break;
-		case R.id.send_bt:
+		case R.id.send_bt:							
 			if (!(image.getDrawable() == null)
 					&& !(record_name.getText().toString().trim().equals(""))
 					&& !(videoTextView.getText().toString().trim().equals(""))) {
@@ -280,30 +281,18 @@ public class UploadActivity extends Activity implements OnClickListener {
 				String ip = "192.168.1.101";
 				
 
-				urlParameters = "http://" + ip + ":8080/IHASWeb/Insert.action?";
-				url_constant_parameters = "http://" + ip
-						+ ":8080/IHASWeb/Insert.action?";
-				uploadServerUrl = "http://" + ip
-						+ ":8080/IHASWeb/UploadServlet?";
+				urlParameters = "https://" + ip + ":8443/IHASWeb/Insert.action?";
+				url_constant_parameters = "https://" + ip
+						+ ":8443/IHASWeb/Insert.action?";
+				uploadServerUrl = "https://" + ip
+						+ ":8443/IHASWeb/UploadServlet?";
 
 				showProgressDialog();
+				
+				HttpsUtil httpsUtil=new HttpsUtil();
+				httpsUtil.httpsRequestThread(urlParameters);
+			 
 
-				// totleInfo.append(type_str).append(',').append(question_str)
-				// .append(',').append(ipInfo.getText().toString());
-				// totle_str = totleInfo.toString().trim();
-				// Timer timer = new Timer();
-				// timer.schedule(new TimerTask() {
-				// @Override
-				// public void run() {
-				// dialog.dismiss();
-				// // Intent intent = new Intent(UploadActivity.this,
-				// // MapActivity.class);
-				// // startActivity(intent);
-				// // UploadActivity.this.finish();
-				// Message msg = new Message();
-				// handler.sendMessage(msg);
-				// }
-				// }, 5000);
 
 				timeSubmit.setToNow();
 				strTimeSubmit = timeSubmit.format("%Y%m%d%H%M%S");

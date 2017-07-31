@@ -276,7 +276,9 @@ public class UploadActivity extends Activity implements OnClickListener {
 				// if (!(record_name.getText().toString().trim().equals("")))
 				// {
 				// String ip = ipInfo.getText().toString();
-				String ip = "218.249.137.198";
+//				String ip = "218.249.137.198";
+				String ip = "192.168.1.101";
+				
 
 				urlParameters = "http://" + ip + ":8080/IHASWeb/Insert.action?";
 				url_constant_parameters = "http://" + ip

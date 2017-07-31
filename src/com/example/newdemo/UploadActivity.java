@@ -269,7 +269,7 @@ public class UploadActivity extends Activity implements OnClickListener {
 
 			videoTextView.setText(videoName);
 			break;
-		case R.id.send_bt:							
+		case R.id.send_bt:
 			if (!(image.getDrawable() == null)
 					&& !(record_name.getText().toString().trim().equals(""))
 					&& !(videoTextView.getText().toString().trim().equals(""))) {
@@ -277,52 +277,49 @@ public class UploadActivity extends Activity implements OnClickListener {
 				// if (!(record_name.getText().toString().trim().equals("")))
 				// {
 				// String ip = ipInfo.getText().toString();
-//				String ip = "218.249.137.198";
+				// String ip = "218.249.137.198";
 				String ip = "192.168.1.101";
-				
 
-				urlParameters = "https://" + ip + ":8443/IHASWeb/Insert.action?";
+				urlParameters = "https://" + ip
+						+ ":8443/IHASWeb/Insert.action?";
 				url_constant_parameters = "https://" + ip
 						+ ":8443/IHASWeb/Insert.action?";
 				uploadServerUrl = "https://" + ip
 						+ ":8443/IHASWeb/UploadServlet?";
 
 				showProgressDialog();
-				
-				HttpsUtil httpsUtil=new HttpsUtil();
-				httpsUtil.httpsRequestThread(urlParameters);
-			 
-
-
 				timeSubmit.setToNow();
 				strTimeSubmit = timeSubmit.format("%Y%m%d%H%M%S");
 				recordCode = currentPhoneNumber + strTimeSubmit;
 
-				Thread thread = new Thread(new Runnable() {
-					@Override
-					public void run() {
-						try {
-							// 上传图片、音频和视频
-							File fileImage = new File(imagePath);
-							HttpUtil.uploadFile(fileImage, uploadServerUrl);
+				HttpsUtil httpsUtil = new HttpsUtil();
+				httpsUtil.InsertToDatabase(urlParameters,recordCode,date,imageName,voiceName,videoName);
 
-							File fileVoice = new File(voicePath);
-							HttpUtil.uploadFile(fileVoice, uploadServerUrl);
+//				Thread thread = new Thread(new Runnable() {
+//					@Override
+//					public void run() {
+//						try {
+//							// 上传图片、音频和视频
+//							File fileImage = new File(imagePath);
+//							HttpUtil.uploadFile(fileImage, uploadServerUrl);
+//
+//							File fileVoice = new File(voicePath);
+//							HttpUtil.uploadFile(fileVoice, uploadServerUrl);
+//
+//							File fileVideo = new File(videoPath);
+//							HttpUtil.uploadFile(fileVideo, uploadServerUrl);
+//
+//							// 上传数据库表格字段信息
+//							// InsertToDatabaseService(recordCode, date,
+//							// imageName, voiceName, videoName);
+//
+//						} catch (Exception e) {
+//							e.printStackTrace();
+//						}
+//					}
+//				});
 
-							File fileVideo = new File(videoPath);
-							HttpUtil.uploadFile(fileVideo, uploadServerUrl);
-
-							// 上传数据库表格字段信息
-							InsertToDatabaseService(recordCode, date,
-									imageName, voiceName, videoName);
-
-						} catch (Exception e) {
-							e.printStackTrace();
-						}
-					}
-				});
-
-				thread.start();
+//				thread.start();
 
 			} else {
 				MyToast.showToast(UploadActivity.this,

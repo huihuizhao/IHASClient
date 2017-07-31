@@ -18,18 +18,10 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;  
 import javax.net.ssl.X509TrustManager;  
 
-public class HttpsUtil {
-	static String phoneNumberHttps;
-	static String dateHttps;
-	static String imagePathHttps;
-	static String voicePathHttps;
-	static String videoPathHttps;
-	public void InsertToDatabase(String url,String phoneNumber,String date,String imagePath,String voicePath,String videoPath) { 
-		phoneNumberHttps=phoneNumber;
-		dateHttps=date;
-		imagePathHttps=imagePath;
-		voicePathHttps=voicePath;
-		videoPathHttps=videoPath;
+public class HttpsUtil00 {
+	
+
+	public void httpsRequestThread(String url) {  
         new HttpsRequestThread(url).start();  
     }  
   
@@ -58,8 +50,8 @@ public class HttpsUtil {
         OutputStreamWriter osw=new OutputStreamWriter(connection.getOutputStream());
 //        osw.write("uid="+uid+"&pass_word="+password);
         osw.write("phoneNumber="
-				+ phoneNumberHttps + "&date=" + dateHttps+ "&imagePath=" + imagePathHttps
-				+ "&voicePath=" + voicePathHttps + "&videoPath=" + videoPathHttps);
+				+ "188" + "&date=" + "2017" + "&imagePath=" + "image"
+				+ "&voicePath=" + "voice" + "&videoPath=" + "video1");
 
         osw.flush();
         osw.close();

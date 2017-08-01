@@ -1,9 +1,13 @@
 ﻿package com.example.newdemo;
 
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Timer;
 import java.util.TimerTask;
@@ -43,6 +47,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.provider.MediaStore;
 import android.text.format.Time;
+import android.util.Base64;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -101,7 +106,7 @@ public class UploadActivity extends Activity implements OnClickListener {
 
 	private String urlParameters = "";
 	private String url_constant_parameters = "";
-	private String uploadServerUrl = "";
+	private String uploadUrl = "";
 
 	SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 	String date = dateFormat.format(new java.util.Date());
@@ -284,8 +289,10 @@ public class UploadActivity extends Activity implements OnClickListener {
 						+ ":8443/IHASWeb/Insert.action?";
 				url_constant_parameters = "https://" + ip
 						+ ":8443/IHASWeb/Insert.action?";
-				uploadServerUrl = "https://" + ip
-						+ ":8443/IHASWeb/UploadServlet?";
+//				uploadServerUrl = "https://" + ip
+//						+ ":8443/IHASWeb/UploadServlet?";
+				uploadUrl = "https://" + ip
+						+ ":8443/IHASWeb/UploadFilesAction?";
 
 				showProgressDialog();
 				timeSubmit.setToNow();
@@ -293,7 +300,12 @@ public class UploadActivity extends Activity implements OnClickListener {
 				recordCode = currentPhoneNumber + strTimeSubmit;
 
 				HttpsUtil httpsUtil = new HttpsUtil();
-				httpsUtil.InsertToDatabase(urlParameters,recordCode,date,imageName,voiceName,videoName);
+				httpsUtil.InsertRecordToDatabase(urlParameters,recordCode,date,imageName,voiceName,videoName);
+				String imageBase64=imageToBase64(imagePath);
+				
+				httpsUtil.UploadFiles(uploadUrl, imageName, imageBase64, null, null);
+
+				
 
 //				Thread thread = new Thread(new Runnable() {
 //					@Override
@@ -433,6 +445,41 @@ public class UploadActivity extends Activity implements OnClickListener {
 			stopPlaying();
 		}
 	}
+	
+	/**
+     * @将图片文件转化为字节数组字符串，并对其进行Base64编码处理
+     * @author QQ472432718
+     * @Date 2015-01-26
+     * @param path 图片路径
+     * @return
+     */
+    public static String imageToBase64(String path) {
+    // 将图片文件转化为字节数组字符串，并对其进行Base64编码处理
+        byte[] data = null;
+        // 读取图片字节数组
+        try {
+
+            InputStream in = new FileInputStream(path);
+
+            data = new byte[in.available()];
+
+            in.read(data);
+
+            in.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // 对字节数组Base64编码
+//        BASE64Encoder encoder = new BASE64Encoder();
+//            // 返回Base64编码过的字节数组字符串           
+//        return encoder.encode(data);
+        
+        
+        return  Base64.encodeToString(data, Base64.DEFAULT);
+    }
+
+
+	
 
 	// 开始播放
 	private void startPlaying() {

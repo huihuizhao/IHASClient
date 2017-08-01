@@ -276,8 +276,8 @@ public class UploadActivity extends Activity implements OnClickListener {
 			break;
 		case R.id.send_bt:
 			if (!(image.getDrawable() == null))
-//					&& !(record_name.getText().toString().trim().equals(""))
-//					&& !(videoTextView.getText().toString().trim().equals(""))) 
+			// && !(record_name.getText().toString().trim().equals(""))
+			// && !(videoTextView.getText().toString().trim().equals("")))
 			{
 				// && !(ipInfo.getText().toString().trim().equals(""))) {
 				// if (!(record_name.getText().toString().trim().equals("")))
@@ -290,11 +290,10 @@ public class UploadActivity extends Activity implements OnClickListener {
 						+ ":8443/IHASWeb/Insert.action?";
 				url_constant_parameters = "https://" + ip
 						+ ":8443/IHASWeb/Insert.action?";
-//				uploadServerUrl = "https://" + ip
-//						+ ":8443/IHASWeb/UploadServlet?";
+				// uploadServerUrl = "https://" + ip
+				// + ":8443/IHASWeb/UploadServlet?";
 				uploadUrl = "https://" + ip
 						+ ":8443/IHASWeb/UploadFiles.action?";
-				
 
 				showProgressDialog();
 				timeSubmit.setToNow();
@@ -302,38 +301,41 @@ public class UploadActivity extends Activity implements OnClickListener {
 				recordCode = currentPhoneNumber + strTimeSubmit;
 
 				HttpsUtil httpsUtil = new HttpsUtil();
-				httpsUtil.InsertRecordToDatabase(urlParameters,recordCode,date,imageName,voiceName,videoName);
-				String imageBase64=imageToBase64(imagePath);
+				httpsUtil.InsertRecordToDatabase(urlParameters, recordCode,
+						date, imageName, voiceName, videoName);
+				imagePath="/storage/emulated/0/20170801142705.jpg";
+				String imageBase64 = Image2StrByBase64(imagePath);
+//				String imageBase64 = imageToBase64(imagePath);
 				
-				httpsUtil.UploadFiles(uploadUrl, imageName, imageBase64, null, null);
 
-				
+				httpsUtil.UploadFiles(uploadUrl, imageName, imageBase64, null,
+						null);
 
-//				Thread thread = new Thread(new Runnable() {
-//					@Override
-//					public void run() {
-//						try {
-//							// 上传图片、音频和视频
-//							File fileImage = new File(imagePath);
-//							HttpUtil.uploadFile(fileImage, uploadServerUrl);
-//
-//							File fileVoice = new File(voicePath);
-//							HttpUtil.uploadFile(fileVoice, uploadServerUrl);
-//
-//							File fileVideo = new File(videoPath);
-//							HttpUtil.uploadFile(fileVideo, uploadServerUrl);
-//
-//							// 上传数据库表格字段信息
-//							// InsertToDatabaseService(recordCode, date,
-//							// imageName, voiceName, videoName);
-//
-//						} catch (Exception e) {
-//							e.printStackTrace();
-//						}
-//					}
-//				});
+				// Thread thread = new Thread(new Runnable() {
+				// @Override
+				// public void run() {
+				// try {
+				// // 上传图片、音频和视频
+				// File fileImage = new File(imagePath);
+				// HttpUtil.uploadFile(fileImage, uploadServerUrl);
+				//
+				// File fileVoice = new File(voicePath);
+				// HttpUtil.uploadFile(fileVoice, uploadServerUrl);
+				//
+				// File fileVideo = new File(videoPath);
+				// HttpUtil.uploadFile(fileVideo, uploadServerUrl);
+				//
+				// // 上传数据库表格字段信息
+				// // InsertToDatabaseService(recordCode, date,
+				// // imageName, voiceName, videoName);
+				//
+				// } catch (Exception e) {
+				// e.printStackTrace();
+				// }
+				// }
+				// });
 
-//				thread.start();
+				// thread.start();
 
 			} else {
 				MyToast.showToast(UploadActivity.this,
@@ -447,41 +449,57 @@ public class UploadActivity extends Activity implements OnClickListener {
 			stopPlaying();
 		}
 	}
+
+	/**
+	 * 通过Base32将Bitmap转换成Base64字符串
+	 * 
+	 * @param bit
+	 * @return
+	 */
+	public String Image2StrByBase64(String imageFilePath) {
+		Bitmap bitmap=BitmapFactory.decodeFile(imageFilePath);
+		ByteArrayOutputStream bos = new ByteArrayOutputStream();
+		bitmap.compress(CompressFormat.JPEG, 100, bos);// 参数100表示不压缩
+		byte[] bytes = bos.toByteArray();
+		return Base64.encodeToString(bytes, Base64.DEFAULT);
+  
+	}
+
+
 	
 	/**
-     * @将图片文件转化为字节数组字符串，并对其进行Base64编码处理
-     * @author QQ472432718
-     * @Date 2015-01-26
-     * @param path 图片路径
-     * @return
-     */
-    public static String imageToBase64(String path) {
-    // 将图片文件转化为字节数组字符串，并对其进行Base64编码处理
-        byte[] data = null;
-        // 读取图片字节数组
-        try {
+	 * @将图片文件转化为字节数组字符串，并对其进行Base64编码处理
+	 * @author QQ472432718
+	 * @Date 2015-01-26
+	 * @param path
+	 *            图片路径
+	 * @return
+	 */
+	public static String imageToBase64(String path) {
+		
+		
+		// 将图片文件转化为字节数组字符串，并对其进行Base64编码处理
+		byte[] data = null;
+		// 读取图片字节数组
+		try {
 
-            InputStream in = new FileInputStream(path);
+			InputStream in = new FileInputStream(path);
 
-            data = new byte[in.available()];
+			data = new byte[in.available()];
 
-            in.read(data);
+			in.read(data);
 
-            in.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        // 对字节数组Base64编码
-//        BASE64Encoder encoder = new BASE64Encoder();
-//            // 返回Base64编码过的字节数组字符串           
-//        return encoder.encode(data);
-        
-        
-        return  Base64.encodeToString(data, Base64.DEFAULT);
-    }
+			in.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		// 对字节数组Base64编码
+		// BASE64Encoder encoder = new BASE64Encoder();
+		// // 返回Base64编码过的字节数组字符串
+		// return encoder.encode(data);
 
-
-	
+		return Base64.encodeToString(data, Base64.DEFAULT);
+	}
 
 	// 开始播放
 	private void startPlaying() {

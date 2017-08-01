@@ -275,9 +275,10 @@ public class UploadActivity extends Activity implements OnClickListener {
 			videoTextView.setText(videoName);
 			break;
 		case R.id.send_bt:
-			if (!(image.getDrawable() == null)
-					&& !(record_name.getText().toString().trim().equals(""))
-					&& !(videoTextView.getText().toString().trim().equals(""))) {
+			if (!(image.getDrawable() == null))
+//					&& !(record_name.getText().toString().trim().equals(""))
+//					&& !(videoTextView.getText().toString().trim().equals(""))) 
+			{
 				// && !(ipInfo.getText().toString().trim().equals(""))) {
 				// if (!(record_name.getText().toString().trim().equals("")))
 				// {
@@ -292,7 +293,7 @@ public class UploadActivity extends Activity implements OnClickListener {
 //				uploadServerUrl = "https://" + ip
 //						+ ":8443/IHASWeb/UploadServlet?";
 				uploadUrl = "https://" + ip
-						+ ":8443/IHASWeb/UploadFilesAction?";
+						+ ":8443/IHASWeb/UploadFiles.action?";
 				
 
 				showProgressDialog();

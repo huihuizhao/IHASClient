@@ -293,6 +293,7 @@ public class UploadActivity extends Activity implements OnClickListener {
 //						+ ":8443/IHASWeb/UploadServlet?";
 				uploadUrl = "https://" + ip
 						+ ":8443/IHASWeb/UploadFilesAction?";
+				
 
 				showProgressDialog();
 				timeSubmit.setToNow();

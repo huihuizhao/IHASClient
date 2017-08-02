@@ -133,7 +133,7 @@ public class RegisterActivity extends Activity implements OnClickListener {
 	}
 	private void getRegisterInfo(String pswd, String phoneNo){
 		HttpClient mHttpClient = new DefaultHttpClient();
-		HttpPost mHttpPost = new HttpPost(NetRequestAddress.REQUEST_ADDR_REGISTER);
+		HttpPost mHttpPost = new HttpPost("");
 		//组装数据放到HttpEntity中发送到服务器
 		ArrayList<BasicNameValuePair> dataList = new ArrayList<BasicNameValuePair>();
 		dataList.add(new BasicNameValuePair("password", pswd));

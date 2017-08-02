@@ -33,7 +33,7 @@ public class HttpUtil {
 	
 	public void getLoginResponseInfo(Context context, String phone, String pswd) {
 		HttpClient httpClient = new DefaultHttpClient();
-		HttpPost httpPost = new HttpPost(NetRequestAddress.REQUEST_ADDR_LOGIN);
+//		HttpPost httpPost = new HttpPost(NetRequestAddress.REQUEST_ADDR_LOGIN);
 		//组装数据放到HttpEntity中发送到服务器
 		ArrayList<BasicNameValuePair> dataList = new ArrayList<BasicNameValuePair>();
 		dataList.add(new BasicNameValuePair("phone", phone));
@@ -44,13 +44,13 @@ public class HttpUtil {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		httpPost.setEntity(httpEntity);
+//		httpPost.setEntity(httpEntity);
 		//向服务器发送POST请求并获取服务器返回的结果
 		HttpResponse httpResponse = null;
 		//获取响应的结果信息 
 		String result = "";
 		try {
-			httpResponse = httpClient.execute(httpPost);
+//			httpResponse = httpClient.execute(httpPost);
 			result = EntityUtils.toString(httpResponse.getEntity(), "utf-8");
 			MyLog.d("KungFuLife", "登录result ＝ " + result);
 			if (result != null && !result.trim().toString().equals("")) {
@@ -65,7 +65,7 @@ public class HttpUtil {
 	//上传数据用的类
 	public static void postInfoToServer(Context context, File mFileName, File actionUrl, String info) {
 		HttpClient httpClient = new DefaultHttpClient();
-		HttpPost httpPost = new HttpPost(NetRequestAddress.REQUEST_ADDR_LOGIN);
+//		HttpPost httpPost = new HttpPost(NetRequestAddress.REQUEST_ADDR_LOGIN);
 		//组装数据放到HttpEntity中发送到服务器
 		ArrayList<BasicNameValuePair> dataList = new ArrayList<BasicNameValuePair>();
 //		dataList.add(new BasicNameValuePair("mFileName", mFileName));
@@ -76,13 +76,13 @@ public class HttpUtil {
 		} catch (UnsupportedEncodingException e) {
 			e.printStackTrace();
 		}
-		httpPost.setEntity(httpEntity);
+//		httpPost.setEntity(httpEntity);
 		//向服务器发送POST请求并获取服务器返回的结果
 		HttpResponse httpResponse = null;
 		//获取响应的结果信息 
 		String result = "";
 		try {
-			httpResponse = httpClient.execute(httpPost);
+//			httpResponse = httpClient.execute(httpPost);
 			result = EntityUtils.toString(httpResponse.getEntity(), "utf-8");
 			MyLog.d("KungFuLife", "登录result ＝ " + result);
 			if (result != null && !result.trim().toString().equals("")) {

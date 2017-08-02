@@ -36,7 +36,7 @@ public class MyProgressDialog extends ProgressDialog {
 		//获取对话框当前的参数值
 		WindowManager.LayoutParams p = getWindow().getAttributes();
 		p.gravity = Gravity.CENTER;
-		p.width = DeviceTools.dip2px(mContext, 60);
+//		p.width = DeviceTools.dip2px(mContext, 60);
 		getWindow().setAttributes(p);
 		animation = AnimationUtils.loadAnimation(mContext, R.anim.loading_ani);
 		animation.setInterpolator(new LinearInterpolator());//设置动画的速率，LinearInterpolator为以均匀的速率改变
